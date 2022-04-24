@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}會議記錄{% endblock%}
+{% block content %}
+{% for minutes in minutes %}
+<article class="blog-post mt-5">
+    <h2 class="blog-post-title">{{minutes.subject}}</h2>
+    <p class="blog-post-meta">{{minutes.meeting_date}}</p>
+    <p>{{minutes.minutes}}</p>
+    <hr>
+</article>
+{% endfor %}
+{% endblock %}

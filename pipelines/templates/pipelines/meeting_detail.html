@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ meeting.subject }}{% endblock %}
+{% block content %}
+<h3 class="mt-5">{{ meeting.subject }}</h3>
+<p><strong>開會日期:</strong> {{ meeting.meeting_date }}</p>
+<p><strong>與會單位:</strong> {{ meeting.company.all|join:"、" }}</p>
+<p><strong>會議紀錄:</strong> {{ meeting.minutes }}</p>
+<p><strong>會議記錄文號:</strong> {{ meeting.issue_no }}</p>
+<p><strong>會議記錄發文日期:</strong> {{ meeting.issue_date }}</p>
+{% endblock %}

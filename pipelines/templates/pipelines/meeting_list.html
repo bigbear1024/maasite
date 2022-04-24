@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}行事曆{% endblock %}
+{% block content %}
+<h3 class="mt-5">行事曆</h3>
+<table class="table table-striped table-hover">
+    <th>日期</th>
+    <th>會議（勘）名稱</th>
+    {% for meeting in meeting_list %}
+    <tr>
+        <td>{{meeting.meeting_date}}</td>
+        <td><a href="{{ meeting.get_absolute_url }}">{{ meeting.subject }}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
