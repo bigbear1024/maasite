@@ -164,7 +164,7 @@ class WebsiteLink(models.Model):
         max_length=255, help_text='需包含https://', verbose_name="連結")
     summary = models.TextField(
         max_length=1000, null=True, blank=True, verbose_name="摘要")
-    LINK_TYPE = (('w', '友站連結'), ('n', '新聞媒體'),)
+    LINK_TYPE = (('w', '相關網站'), ('n', '新聞媒體'),)
     type = models.CharField(max_length=1, choices=LINK_TYPE,
                             default='n', help_text='選擇網站種類', verbose_name="網站種類")
 
