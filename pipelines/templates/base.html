@@ -14,7 +14,7 @@
     {% load static %}
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
 
-    <title>塭仔圳管線協調平台|{% block title %}{% endblock title %}</title>
+    <title>塭仔圳管線協調平台|{% block title %}{% endblock %}</title>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -46,10 +46,10 @@
                             <a class="nav-link" href="#">參考資料</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">新聞</a>
+                            <a class="nav-link" href="{% url 'news' %}">新聞媒體</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">常用網站</a>
+                            <a class="nav-link" href="{% url 'links' %}">有站連結</a>
                         </li>
                     </ul>
                     {% comment %} <form class="d-flex">
@@ -64,7 +64,7 @@
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="container">
-            {% block content %}{% endblock content %}
+            {% block content %}{% endblock %}
             {% block pagination %}
             {% if is_paginated %}
             <div class="pagination">

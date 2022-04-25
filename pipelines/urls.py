@@ -12,4 +12,6 @@ urlpatterns = [
     path('contact/<int:pk>', views.ContactDetailView.as_view(),
          name='contact-detail'),
     path('minutes/', views.minutes, name='minutes'),
+    path('news/', views.news, name='news'),
+    path('links/', views.links, name='links'),
 ]

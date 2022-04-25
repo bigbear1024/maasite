@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}友站連結{% endblock %}
+{% block content %}
+<table class="mt-5 table table-borderless">
+    {% for link in website_link %}
+    <tr>
+        <th>網站名稱</th>
+        <th>連結</th>
+    </tr>
+    <tr>
+        <td>{{link.name}}</td>
+        <td><a href="{{link.link}}" target="_blank" class="btn btn-primary">前往連結</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

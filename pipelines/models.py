@@ -1,17 +1,19 @@
 from distutils.command.upload import upload
 import email
 from email.policy import default
-from operator import mod
+from operator import mod, ne
 from pydoc import locate
 from pyexpat import model
 from re import T
 import re
 from statistics import mode
 from tabnanny import verbose
+from types import TracebackType
 from unicodedata import name
 from django.db import models
 from django.contrib import admin
 from datetime import date
+from django.forms import CharField
 from django.urls import reverse
 
 
@@ -154,3 +156,21 @@ class Task(models.Model):
 
     def __str__(self):
         return '{0} ({1})'.format(self.id, self.subject.subject)
+
+
+class WebsiteLink(models.Model):
+    name = models.CharField(max_length=100, verbose_name="標題")
+    link = models.CharField(
+        max_length=255, help_text='需包含https://', verbose_name="連結")
+    summary = models.TextField(
+        max_length=1000, null=True, blank=True, verbose_name="摘要")
+    LINK_TYPE = (('w', '友站連結'), ('n', '新聞媒體'),)
+    type = models.CharField(max_length=1, choices=LINK_TYPE,
+                            default='n', help_text='選擇網站種類', verbose_name="網站種類")
+
+    class Meta:
+        verbose_name = "網站連結"
+        verbose_name_plural = "網站連結"
+
+    def __str__(self):
+        return self.name

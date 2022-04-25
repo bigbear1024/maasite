@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}首頁{% endblock%}
+{% block title %}首頁{% endblock %}
 {% block content %}
 {% load static %}
 
@@ -12,7 +12,7 @@
         <td>{{meeting.meeting_date}}</td>
         <td><a href="{{ meeting.get_absolute_url }}">{{meeting.subject}}</a></td>
     </tr>
-    {% endfor%}
+    {% endfor %}
 </table>
 <h3 class="mt-5"><a href="{% url 'tasks' %}">待辦事項</a></h3>
 <table class="table table-striped table-hover">

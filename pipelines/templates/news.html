@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}新聞媒體{% endblock %}
+
+{% block content %}
+
+
+<div class="row mt-5">
+    {% for link in news_link %}
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{link.name}}</h5>
+                <p class="card-text">{{link.summary}}</p>
+                <a href="{{link.link}}" target="_blank" class="btn btn-primary">前往新聞</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

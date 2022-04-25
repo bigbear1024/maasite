@@ -5,7 +5,7 @@ from pyexpat import model
 from re import template
 from unittest import TestProgram
 from django.shortcuts import render
-from .models import Contact, Meeting, Task
+from .models import Contact, Meeting, Task, WebsiteLink
 from django.views import generic
 # Create your views here.
 
@@ -47,3 +47,13 @@ class ContactListView(generic.ListView):
 
 class ContactDetailView(generic.DetailView):
     model = Task
+
+
+def news(request):
+    news_link = WebsiteLink.objects.filter(type='n')
+    return render(request, 'news.html', {'news_link': news_link})
+
+
+def links(request):
+    website_link = WebsiteLink.objects.filter(type='w')
+    return render(request, 'links.html', {'website_link': website_link})
