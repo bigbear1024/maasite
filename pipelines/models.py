@@ -18,7 +18,7 @@ from django.urls import reverse
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=100, unique=True, verbose_name="單位")
+    name = models.CharField(max_length=200, unique=True, verbose_name="單位")
 
     def __str__(self):
         return self.name
@@ -29,7 +29,7 @@ class Company(models.Model):
 
 
 class Department(models.Model):
-    name = models.CharField(max_length=100, unique=False, null=True,
+    name = models.CharField(max_length=200, unique=False, null=True,
                             blank=True, verbose_name="部門")
     company = models.ForeignKey(
         Company, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="單位")
@@ -43,7 +43,7 @@ class Department(models.Model):
 
 
 class Road(models.Model):
-    name = models.CharField(max_length=10, null=True,
+    name = models.CharField(max_length=200, null=True,
                             blank=True, verbose_name="道路名稱")
 
     def __str__(self):
