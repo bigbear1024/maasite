@@ -24,6 +24,7 @@ class DepartmentInline(admin.TabularInline):
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
+    search_fields = ['name']
     list_display = ('name', 'number')
     fields = [('name', 'number')]
     inlines = [DepartmentInline, ContactInline]
@@ -31,6 +32,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['company', 'road']
     list_display = ('subject', 'meeting_date', 'notification_no',
                     'notification_date', 'summary', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
@@ -39,6 +41,7 @@ class MeetingAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
+    autocomplete_fields = ['company', 'road']
     list_display = ('subject', 'date',
                     'company_display', 'road_display')
 
@@ -51,6 +54,7 @@ class WebsiteLinkAdmin(admin.ModelAdmin):
 
 @admin.register(Road)
 class RoadAdmin(admin.ModelAdmin):
+    search_fields = ['name']
     list_display = ('name', 'estimated_construction', 'actual_construction',
                     'estimated_completion', 'actual_completion')
 
