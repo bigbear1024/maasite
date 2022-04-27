@@ -1,5 +1,6 @@
 from distutils.command.upload import upload
 import email
+from email import charset
 from email.policy import default
 from operator import mod, ne
 from pydoc import locate
@@ -18,14 +19,17 @@ from django.urls import reverse
 
 
 class Company(models.Model):
-    name = models.CharField(max_length=200, unique=True, verbose_name="單位")
+    name = models.CharField(max_length=200, unique=True, verbose_name="單位名稱")
+    number = models.CharField(max_length=2, null=True,
+                              blank=True, verbose_name="分類編號")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "單位"
-        verbose_name_plural = "單位"
+        ordering = ('number',)
+        verbose_name = "通訊錄"
+        verbose_name_plural = "G.通訊錄"
 
 
 class Department(models.Model):
@@ -40,18 +44,6 @@ class Department(models.Model):
     class Meta:
         verbose_name = "部門"
         verbose_name_plural = "部門"
-
-
-class Road(models.Model):
-    name = models.CharField(max_length=200, null=True,
-                            blank=True, verbose_name="道路名稱")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "道路清單"
-        verbose_name_plural = "道路清單"
 
 
 class Contact(models.Model):
@@ -80,9 +72,58 @@ class Contact(models.Model):
         verbose_name_plural = "聯絡人"
 
 
+class Road(models.Model):
+    name = models.CharField(max_length=200, null=True,
+                            blank=True, verbose_name="道路名稱")
+    location = models.CharField(
+        max_length=200, null=True, blank=True, verbose_name="位置")
+    coordinate = models.CharField(
+        max_length=100, null=True, blank=True, verbose_name="座標")
+    estimated_construction = models.DateField(
+        default=date.today, verbose_name="預計施工日")
+    actual_construction = models.DateField(
+        default=date.today, verbose_name="實際施工日")
+    estimated_completion = models.DateField(
+        default=date.today, verbose_name="預計完工日")
+    actual_completion = models.DateField(
+        default=date.today, verbose_name="實際完工日")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "道路清單"
+        verbose_name_plural = "E.道路清單"
+
+
+class Milestone(models.Model):
+    name = models.CharField(max_length=200, verbose_name="里程碑名稱")
+    completion_date = models.DateField(default=date.today, verbose_name="完成日期")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "重要里程碑"
+        verbose_name_plural = "D.重要里程碑"
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=200, verbose_name="專案項目")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "專案項目"
+        verbose_name_plural = "C.專案項目"
+
+
 class Meeting(models.Model):
     meeting_date = models.DateField(default=date.today, verbose_name="開會日期")
     subject = models.CharField(max_length=40, verbose_name="會議名稱")
+    project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True,
+                                blank=True, verbose_name="專案項目")
     notification_date = models.DateField(
         default=date.today, verbose_name="通知單日期")
     notification_no = models.CharField(
@@ -116,7 +157,7 @@ class Meeting(models.Model):
 
     class Meta:
         verbose_name = "行事曆"
-        verbose_name_plural = "行事曆"
+        verbose_name_plural = "A.行事曆"
 
     def company_display(self):
         return '、'.join([company.name for company in self.company.all()])
@@ -141,7 +182,7 @@ class Task(models.Model):
 
     class Meta:
         verbose_name = "待辦清單"
-        verbose_name_plural = "待辦清單"
+        verbose_name_plural = "B.待辦清單"
 
     def company_display(self):
         return '、'.join([company.name for company in self.company.all()])
@@ -170,7 +211,7 @@ class WebsiteLink(models.Model):
 
     class Meta:
         verbose_name = "網站連結"
-        verbose_name_plural = "網站連結"
+        verbose_name_plural = "F.網站連結"
 
     def __str__(self):
         return self.name
