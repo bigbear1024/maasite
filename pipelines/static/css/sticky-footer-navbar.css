@@ -12,4 +12,9 @@ main>.container {
   background-color: #00315C;
 }
 
+.bg-custom {
+  background: #024A7B;
+
+}
+
 /* Modify brand and text color */

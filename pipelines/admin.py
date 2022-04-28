@@ -30,13 +30,24 @@ class CompanyAdmin(admin.ModelAdmin):
     inlines = [DepartmentInline, ContactInline]
 
 
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    search_fields = ['name']
+
+    def get_model_perms(self, request):
+        """
+        Return empty perms dict thus hiding the model from admin index.
+        """
+        return {}
+
+
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['company', 'road']
+    autocomplete_fields = ['company', 'road', 'host', 'contact_person']
     list_display = ('subject', 'meeting_date', 'notification_no',
                     'notification_date', 'summary', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
-                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('minutes', 'summary', 'issue_no', 'issue_date', 'minutes_file', 'sign_file', 'keynote_file', 'other_file', 'photo')}),)
+                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('issue_no', 'issue_date', 'summary', 'minutes', 'minutes_file', 'sign_file', 'keynote_file', 'other_file', 'photo')}),)
 
 
 @admin.register(Task)
