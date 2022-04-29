@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}友站連結{% endblock %}
 {% block content %}
-<table class="mt-5 table table-borderless">
-    <tr>
-        <th>網站名稱</th>
-        <th>連結</th>
-    </tr>
-    {% for link in website_link %}
-    <tr>
-        <td>{{link.name}}</td>
-        <td><a href="{{link.link}}" target="_blank" class="btn btn-primary">前往連結</a></td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="table-responsive-sm">
+    <table class="mt-5 table table-borderless">
+        <tr>
+            <th>網站名稱</th>
+            <th>連結</th>
+        </tr>
+        {% for link in website_link %}
+        <tr>
+            <td>{{link.name}}</td>
+            <td><a href="{{link.link}}" target="_blank" class="btn btn-primary">前往連結</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 {% endblock %}

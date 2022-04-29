@@ -140,19 +140,13 @@ class Meeting(models.Model):
     agenda = models.TextField(null=True, blank=True, verbose_name="議題")
     minutes = tinymce_models.HTMLField(
         max_length=3000, null=True, blank=True, verbose_name="會議記錄")
-    summary = models.TextField(
-        max_length=500, null=True, blank=True, verbose_name="摘要")
     issue_no = models.CharField(
         max_length=255, null=True, blank=True, verbose_name="會議記錄文號")
     issue_date = models.DateField(default=date.today, verbose_name="會議記錄發文日期")
     minutes_file = models.FileField(
         upload_to="media/meeting/file/", null=True, blank=True, verbose_name="會議記錄上傳")
-    sign_file = models.FileField(
-        upload_to="media/meeting/sign/", null=True, blank=True, verbose_name="簽到表上傳")
     keynote_file = models.FileField(
         upload_to="media/meeting/keynote/", null=True, blank=True, verbose_name="簡報上傳")
-    other_file = models.FileField(
-        upload_to="media/meeting/other/", null=True, blank=True, verbose_name="附件上傳")
     photo = models.ImageField(
         upload_to="media/meeting/photo/", null=True, blank=True, verbose_name="照片上傳")
 
@@ -204,7 +198,7 @@ class WebsiteLink(models.Model):
     name = models.CharField(max_length=100, verbose_name="標題")
     link = models.CharField(
         max_length=255, help_text='需包含https://', verbose_name="連結")
-    summary = models.TextField(
+    summary = tinymce_models.HTMLField(
         max_length=1000, null=True, blank=True, verbose_name="摘要")
     LINK_TYPE = (('w', '相關網站'), ('n', '新聞媒體'),)
     type = models.CharField(max_length=1, choices=LINK_TYPE,

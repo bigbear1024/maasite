@@ -12,7 +12,6 @@
 
     <!-- Custom styles for this template -->
     {% load static %}
-    <link href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css" rel="stylesheet">
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
     <title>塭仔圳管線協調平台|{% block title %}{% endblock %}</title>
 </head>
@@ -70,19 +69,25 @@
             {% block content %}{% endblock %}
             {% block pagination %}
             {% if is_paginated %}
-            <div class="pagination">
-                <span class="page-links">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
                     {% if page_obj.has_previous %}
-                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">上一頁</a>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
+                            tabindex="-1">上一頁</a>
+                    </li>
                     {% endif %}
-                    <span class="page-current">
-                        第{{ page_obj.number }}頁，共{{ page_obj.paginator.num_pages }}頁
-                    </span>
+                    <!-- 第{{ page_obj.number }}頁，共{{ page_obj.paginator.num_pages }}頁 -->
+                    <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li> -->
                     {% if page_obj.has_next %}
-                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">下一頁</a>
+                    <li class="page-item">
+                        <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}">下一頁</a>
+                    </li>
                     {% endif %}
-                </span>
-            </div>
+                </ul>
+            </nav>
             {% endif %}
             {% endblock %}
         </div>
@@ -97,7 +102,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <script>
         !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
     </script>

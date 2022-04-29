@@ -45,9 +45,9 @@ class ContactAdmin(admin.ModelAdmin):
 class MeetingAdmin(admin.ModelAdmin):
     autocomplete_fields = ['company', 'road', 'host', 'contact_person']
     list_display = ('subject', 'meeting_date', 'notification_no',
-                    'notification_date', 'summary', 'issue_no', 'issue_date', 'company_display')
+                    'notification_date', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
-                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('issue_no', 'issue_date', 'summary', 'minutes', 'minutes_file', 'sign_file', 'keynote_file', 'other_file', 'photo')}),)
+                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('issue_no', 'issue_date', 'minutes', 'minutes_file', 'sign_file', 'keynote_file', 'other_file', 'photo')}),)
 
 
 @admin.register(Task)
