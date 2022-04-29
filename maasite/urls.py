@@ -22,6 +22,7 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls'))
 ]
 
 # Use include() to add paths from the catalog application

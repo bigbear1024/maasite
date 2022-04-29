@@ -16,6 +16,7 @@ from django.contrib import admin
 from datetime import date
 from django.forms import CharField
 from django.urls import reverse
+from tinymce import models as tinymce_models
 
 
 class Company(models.Model):
@@ -137,8 +138,8 @@ class Meeting(models.Model):
     road = models.ForeignKey(Road, on_delete=models.SET_NULL, null=True,
                              blank=True, verbose_name="地點")
     agenda = models.TextField(null=True, blank=True, verbose_name="議題")
-    minutes = models.TextField(
-        max_length=1000, null=True, blank=True, verbose_name="會議記錄")
+    minutes = tinymce_models.HTMLField(
+        max_length=3000, null=True, blank=True, verbose_name="會議記錄")
     summary = models.TextField(
         max_length=500, null=True, blank=True, verbose_name="摘要")
     issue_no = models.CharField(

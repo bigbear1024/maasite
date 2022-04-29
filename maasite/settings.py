@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pipelines.apps.PipelinesConfig'
+    'tinymce',
+    'pipelines.apps.PipelinesConfig',
 ]
 
 MIDDLEWARE = [
