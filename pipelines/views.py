@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import Contact, Meeting, Task, WebsiteLink
 from django.views import generic
-# Create your views here.
+from .filters import ContactFilter
 
 
 def index(request):
@@ -35,6 +35,7 @@ class MeetingDetailView(generic.DetailView):
 
 class TaskLiskView(generic.ListView):
     model = Task
+    queryset = Task.objects.order_by('-date')
     paginate_by = 10
 
 
@@ -42,13 +43,16 @@ class TaskDetailView(generic.DetailView):
     model = Task
 
 
-class ContactListView(generic.ListView):
-    model = Contact
-    paginate_by = 10
-
-
-class ContactDetailView(generic.DetailView):
-    model = Task
+def contacts(request):
+    contacts = Contact.objects.all()
+    contact_filter = ContactFilter(queryset=contacts)
+    if request.method == "POST":
+        contact_filter = ContactFilter(request.POST, queryset=contacts)
+    # paginator = Paginator(contacts, 10)
+    # page_number = request.GET.get('page')
+    # page_obj = paginator.get_page(page_number)
+    context = {'contact_filter': contact_filter}
+    return render(request, 'contacts.html', context)
 
 
 def news(request):

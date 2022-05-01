@@ -47,7 +47,7 @@ class MeetingAdmin(admin.ModelAdmin):
     list_display = ('subject', 'meeting_date', 'notification_no',
                     'notification_date', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
-                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('issue_no', 'issue_date', 'minutes', 'minutes_file', 'sign_file', 'keynote_file', 'other_file', 'photo')}),)
+                 'company', 'host', 'contact_person', 'road', 'agenda')}), ('會議記錄', {'fields': ('issue_no', 'issue_date', 'minutes', 'minutes_file',  'keynote_file', 'photo')}),)
 
 
 @admin.register(Task)

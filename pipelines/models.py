@@ -144,7 +144,7 @@ class Meeting(models.Model):
         max_length=255, null=True, blank=True, verbose_name="會議記錄文號")
     issue_date = models.DateField(default=date.today, verbose_name="會議記錄發文日期")
     minutes_file = models.FileField(
-        upload_to="media/meeting/file/", null=True, blank=True, verbose_name="會議記錄上傳")
+        upload_to="media/meeting/file/", null=True, blank=True, verbose_name="會議(勘)完整掃描檔上傳")
     keynote_file = models.FileField(
         upload_to="media/meeting/keynote/", null=True, blank=True, verbose_name="簡報上傳")
     photo = models.ImageField(
@@ -168,7 +168,8 @@ class Meeting(models.Model):
 class Task(models.Model):
     subject = models.ForeignKey(
         Meeting, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="名稱")
-    content = models.TextField(max_length=1000, blank=True, verbose_name="內容")
+    content = tinymce_models.HTMLField(
+        max_length=3000, blank=True, verbose_name="內容")
     date = models.DateField(default=date.today, verbose_name="預計完成日期")
     company = models.ManyToManyField(
         Company, verbose_name="相關單位")

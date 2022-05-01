@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
+    'django_filters',
     'tinymce',
     'pipelines.apps.PipelinesConfig',
 ]
@@ -124,11 +126,6 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-STATIC_URL = 'media/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "media",
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

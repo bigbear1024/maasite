@@ -6,5 +6,5 @@
 <p><strong>相關單位:</strong> {{ task.company.all|join:"、" }}</p>
 <p><strong>影響道路:</strong> {{ task.road.all|join:"、" }}</p>
 <p><strong>預計完成日期:</strong> {{ task.date }}</p>
-<p><strong>內容:</strong> {{ task.content }}</p>
+<p><strong>內容:</strong> {{ task.content|safe }}</p>
 {% endblock %}
