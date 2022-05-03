@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}計畫道路{% endblock %}
+{% block content %}
+<h3 class="mt-5">計畫道路</h3>
+<table class="mt-5 table table-striped table-hover">
+    <th width="30%">道路名稱</th>
+    <th width="17.5%">預計施工日</th>
+    <th width="17.5%">實際施工日</th>
+    <th width="17.5%">預計完工日</th>
+    <th width="17.5%">實際完工日</th>
+    {% for road in roads %}
+    <tr>
+        <td>{{ road.name }}</td>
+        <td>{{ road.estimated_construction }}</td>
+        <td>{{ road.actual_construction }}</td>
+        <td>{{ road.estimated_completion }}</td>
+        <td>{{ road.actual_completion }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

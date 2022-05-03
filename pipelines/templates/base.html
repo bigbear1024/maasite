@@ -13,54 +13,54 @@
     <!-- Custom styles for this template -->
     {% load static %}
     <link href="{% static 'css/sticky-footer-navbar.css' %}" rel="stylesheet">
-    <title>塭仔圳管線協調平台|{% block title %}{% endblock %}</title>
+    <title>塭仔圳市地重劃區（第一區）PCM 管線協調|{% block title %}{% endblock %}</title>
 </head>
 
 <body class="d-flex flex-column h-100">
     <header>
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-custom shadow-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/"><img class="me-2" src="{% static 'image/logo.png' %}" width="48"
-                        height="60" alt="logo"><span class="fs-4">塭仔圳管線協調平台</span></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'meetings' %}">行事曆</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="{% url 'minutes' %}">會議記錄</a>
+        <div class="container-fluid">
+            <header class="d-flex flex-wrap fixed-top  justify-content-center py-3 mb-4 navbar-custom border-bottom">
+                <a href="/"
+                    class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"><img
+                        class="me-2" src="{% static 'image/logo.png' %}" width="48" height="60" alt="logo"><span
+                        class="fs-4">塭仔圳市地重劃區（第一區）PCM 管線協調</span></a>
+                <ul class="nav nav-pills">
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'meetings' %}">行事曆</a>
+                    </li>
+                    <!-- <li class="nva-item">
+                            <a class="nav-link text-white" href="{% url 'minutes' %}">會議記錄</a>
                         </li> -->
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'tasks' %}">待辦事項</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'milestones' %}">里程碑</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'contacts' %}">通訊錄</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">參考資料</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'news' %}">新聞媒體</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'links' %}">相關網站</a>
-                        </li>
-                    </ul>
-                    {% comment %} <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form> {% endcomment %}
-                </div>
-            </div>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'tasks' %}">待辦事項</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'milestones' %}">里程碑</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'roads' %}">計畫道路</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'contacts' %}">通訊錄</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="#">參考資料</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'news' %}">新聞媒體</a>
+                    </li>
+                    <li class="nva-item">
+                        <a class="nav-link text-white" href="{% url 'links' %}">相關網站</a>
+                    </li>
+                </ul>
+                {% comment %} <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form> {% endcomment %}
+        </div>
+        </div>
         </nav>
     </header>
 

@@ -7,7 +7,7 @@ from unittest import TestProgram
 from urllib import request
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import Contact, Meeting, Milestone, Task, WebsiteLink
+from .models import Contact, Meeting, Milestone, Road, Task, WebsiteLink
 from django.views import generic
 from .filters import ContactFilter, MeetingFilter
 
@@ -92,3 +92,8 @@ def links(request):
 def milestones(request):
     milestones = Milestone.objects.all().order_by('name')
     return render(request, 'milestones.html', {'milestones': milestones})
+
+
+def roads(request):
+    roads = Road.objects.all().order_by('name')
+    return render(request, 'roads.html', {'roads': roads})
