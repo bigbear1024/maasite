@@ -53,7 +53,7 @@ class MeetingAdmin(admin.ModelAdmin):
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
     autocomplete_fields = ['company', 'road']
-    list_display = ('subject', 'date',
+    list_display = ('number', 'subject', 'date',
                     'company_display', 'road_display')
 
 

@@ -2,11 +2,25 @@
 {% block title %}{{ meeting.subject }}{% endblock %}
 {% block content %}
 <h3 class="mt-5">{{ meeting.subject }}</h3>
-<p><strong>開會日期:</strong> {{ meeting.meeting_date }}</p>
-<p><strong>會議記錄發文日期:</strong> {{ meeting.issue_date }}</p>
-<p><strong>會議記錄文號:</strong> {{ meeting.issue_no }}</p>
-<p><strong>與會單位:</strong> {{ meeting.company.all|join:"、" }}</p>
-<p><strong>會議紀錄:</strong> {{ meeting.minutes|safe }}</p>
+<div class="mt-5 row">
+    <div class="col-12 col-md-7">
 
+        <h4>會議紀錄</h4>
+        <hr> {{ meeting.minutes|safe }}
+    </div>
+    <div class="col-12 col-md-5">
+        <h4>會議相關資訊</h4>
+        <hr>
+        <p><strong>通知單日期：</strong> {{ meeting.notification_date }}</p>
+        <p><strong>通知單文號：</strong> {{ meeting.notification_no }}</p>
+        <p><strong>開會日期：</strong> {{ meeting.meeting_date }}</p>
+        <p><strong>會議記錄發文日期：</strong> {{ meeting.issue_date }}</p>
+        <p><strong>會議記錄文號：</strong> {{ meeting.issue_no }}</p>
+        <p><strong>與會單位：</strong> {{ meeting.company.all|join:"、" }}</p>
+        <h4 class="mt-5">檔案下載</h4>
+        <p><strong>會議(勘)完整掃描檔</strong></p><button class="btn btn-primary">下載</button></a>
+        <hr>
+    </div>
+</div>
 
 {% endblock %}

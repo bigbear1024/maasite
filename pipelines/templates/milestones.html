@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}里程碑{% endblock %}
+{% block content %}
+<h3 class="mt-5">里程碑</h3>
+<table class="mt-5 table table-striped table-hover">
+    <th>里程碑</th>
+    <th>完成日期</th>
+    {% for milestone in milestones %}
+    <tr>
+        <td>{{ milestone.name }}</td>
+        <td>{{ milestone.completion_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

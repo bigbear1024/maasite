@@ -17,8 +17,7 @@ var x = setInterval(function () {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    document.getElementById("1-1").innerHTML = days + "天" + hours + "小時"
-        + minutes + "分鐘" + seconds + "秒";;
+    document.getElementById("1-1").innerHTML = days + "天";
 
 
     // If the count down is finished, write some text 
@@ -47,8 +46,7 @@ var y = setInterval(function () {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     // Display the result in the element with id="demo"
-    document.getElementById("1-2").innerHTML = days + "天" + hours + "小時"
-        + minutes + "分鐘" + seconds + "秒";;
+    document.getElementById("1-2").innerHTML = days + "天";
 
 
     // If the count down is finished, write some text 

@@ -2,6 +2,7 @@ from distutils.command.upload import upload
 import email
 from email import charset
 from email.policy import default
+import numbers
 from operator import mod, ne
 from pydoc import locate
 from pyexpat import model
@@ -98,15 +99,15 @@ class Road(models.Model):
 
 
 class Milestone(models.Model):
-    name = models.CharField(max_length=200, verbose_name="里程碑名稱")
+    name = models.CharField(max_length=200, verbose_name="里程碑")
     completion_date = models.DateField(default=date.today, verbose_name="完成日期")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        verbose_name = "重要里程碑"
-        verbose_name_plural = "D.重要里程碑"
+        verbose_name = "里程碑"
+        verbose_name_plural = "D.里程碑"
 
 
 class Project(models.Model):
@@ -174,7 +175,8 @@ class Task(models.Model):
     company = models.ManyToManyField(
         Company, verbose_name="相關單位")
     road = models.ManyToManyField(
-        Road, verbose_name="影響道路")
+        Road, blank=True, verbose_name="影響道路")
+    number = models.CharField(max_length=8, null=True, verbose_name="編號")
 
     class Meta:
         verbose_name = "待辦清單"

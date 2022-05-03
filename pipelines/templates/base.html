@@ -35,11 +35,12 @@
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="{% url 'minutes' %}">會議記錄</a>
                         </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">專案項目</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'tasks' %}">待辦事項</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'milestones' %}">里程碑</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'contacts' %}">通訊錄</a>
@@ -105,7 +106,7 @@
     <script>
         !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
     </script>
-    <script type="text/javascript" src="{% static "js/main.js" %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

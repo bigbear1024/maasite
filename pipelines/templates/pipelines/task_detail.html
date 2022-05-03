@@ -2,9 +2,15 @@
 {% block title %}待辦事項-{{ task.subject }}{% endblock %}
 {% block content %}
 <h3 class="mt-5">{{ task.subject }}</h3>
-<p><strong>名稱:</strong> {{ task.subject }}</p>
-<p><strong>相關單位:</strong> {{ task.company.all|join:"、" }}</p>
-<p><strong>影響道路:</strong> {{ task.road.all|join:"、" }}</p>
-<p><strong>預計完成日期:</strong> {{ task.date }}</p>
-<p><strong>內容:</strong> {{ task.content|safe }}</p>
+<div class="mt-5 row">
+    <div class="col-12 col-md-7">
+        <p><strong>會議名稱：</strong> {{ task.subject }}</p>
+        <p><strong>內容：</strong> {{ task.content|safe }}</p>
+    </div>
+    <div class="col-12 col-md-5">
+        <p><strong>相關單位:</strong> {{ task.company.all|join:"、" }}</p>
+        <p><strong>預計完成日期:</strong> {{ task.date }}</p>
+        <p><strong>影響道路:</strong> {{ task.road.all|join:"、" }}</p>
+    </div>
+</div>
 {% endblock %}

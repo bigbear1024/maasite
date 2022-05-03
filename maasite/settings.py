@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'bootstrapform',
     'tinymce',
     'pipelines.apps.PipelinesConfig',
 ]
@@ -124,6 +125,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_URL = 'media/'
+MEDIA_DIRS = [BASE_DIR / "media", ]
 
 
 # Default primary key field type
