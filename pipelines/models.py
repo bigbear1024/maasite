@@ -124,7 +124,7 @@ class Project(models.Model):
 class Meeting(models.Model):
     meeting_date = models.DateField(default=date.today, verbose_name="開會日期")
     subject = models.CharField(max_length=40, verbose_name="會議名稱")
-    project = models.ManyToManyField(Project,blank=True, verbose_name="專案項目")
+    project = models.ManyToManyField(Project, blank=True, verbose_name="專案項目")
     notification_date = models.DateField(
         default=date.today, verbose_name="通知單日期")
     notification_no = models.CharField(
