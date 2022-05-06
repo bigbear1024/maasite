@@ -51,6 +51,7 @@ class TaskDetailView(generic.DetailView):
 
 class ContactListView(generic.ListView):
     model = Contact
+    ordering = ('company__number',)
     paginate_by = 10
 
     def get_context_data(self, **kwargs):

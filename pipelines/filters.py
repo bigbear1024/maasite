@@ -13,4 +13,4 @@ class ContactFilter(django_filters.FilterSet):
 class MeetingFilter(django_filters.FilterSet):
     class Meta:
         model = Meeting
-        fields = ['project', 'company']
+        fields = ['meeting_date', 'project', 'company']

@@ -6,11 +6,6 @@ from statistics import mode
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from .models import Company, Contact, Department, Road, Task, Meeting, WebsiteLink, Project, Milestone
-# Register your models here.
-# admin.site.register(Company)
-# admin.site.register(Contact)
-# admin.site.register(Meeting)
-# admin.site.register(Task)
 
 
 class ContactInline(admin.StackedInline):
@@ -39,19 +34,22 @@ class ContactAdmin(admin.ModelAdmin):
         """
         return {}
 
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    search_fields=['name']
-    
+    search_fields = ['name']
+
     def get_model_perms(self, request):
         """
         Return empty perms dict thus hiding the model from admin index.
         """
         return {}
 
+
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['company', 'road', 'host', 'contact_person','project']
+    autocomplete_fields = ['company', 'road',
+                           'host', 'contact_person', 'project']
     list_display = ('subject', 'meeting_date', 'notification_no',
                     'notification_date', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
@@ -74,7 +72,7 @@ class WebsiteLinkAdmin(admin.ModelAdmin):
 @admin.register(Road)
 class RoadAdmin(admin.ModelAdmin):
     search_fields = ['name']
-    list_display = ('name', 'estimated_construction', 'actual_construction',
+    list_display = ('name', 'zone', 'width', 'estimated_construction', 'actual_construction',
                     'estimated_completion', 'actual_completion')
 
 

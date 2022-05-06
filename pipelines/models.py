@@ -10,6 +10,7 @@ from re import T
 import re
 from statistics import mode
 from tabnanny import verbose
+from turtle import width
 from types import TracebackType
 from unicodedata import name
 from django.db import models
@@ -22,7 +23,7 @@ from tinymce import models as tinymce_models
 
 class Company(models.Model):
     name = models.CharField(max_length=200, unique=True, verbose_name="單位名稱")
-    number = models.CharField(max_length=2, null=True,
+    number = models.CharField(max_length=4, null=True,
                               blank=True, verbose_name="分類編號")
 
     def __str__(self):
@@ -66,9 +67,6 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('contact-detail', args=[str(self.id)])
-
     class Meta:
         verbose_name = "聯絡人"
         verbose_name_plural = "聯絡人"
@@ -81,6 +79,10 @@ class Road(models.Model):
         max_length=200, null=True, blank=True, verbose_name="位置")
     coordinate = models.CharField(
         max_length=100, null=True, blank=True, verbose_name="座標")
+    zone = models.CharField(max_length=100, null=True,
+                            blank=True, verbose_name="分區")
+    width = models.CharField(max_length=20, null=True,
+                             blank=True, verbose_name="路寬")
     estimated_construction = models.DateField(
         default=date.today, verbose_name="預計施工日")
     actual_construction = models.DateField(
@@ -212,3 +214,7 @@ class WebsiteLink(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Reference(models.Model):
+    name = models.CharField(max_length=200, verbose_name="名稱")
