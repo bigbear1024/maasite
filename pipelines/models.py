@@ -84,13 +84,17 @@ class Road(models.Model):
     width = models.CharField(max_length=20, null=True,
                              blank=True, verbose_name="路寬")
     estimated_construction = models.DateField(
-        default=date.today, verbose_name="預計施工日")
+        default=date.today, null=True,
+        blank=True, verbose_name="預計施工日")
     actual_construction = models.DateField(
-        default=date.today, verbose_name="實際施工日")
+        default=date.today, null=True,
+        blank=True, verbose_name="實際施工日")
     estimated_completion = models.DateField(
-        default=date.today, verbose_name="預計完工日")
+        default=date.today, null=True,
+        blank=True, verbose_name="預計完工日")
     actual_completion = models.DateField(
-        default=date.today, verbose_name="實際完工日")
+        default=date.today, null=True,
+        blank=True, verbose_name="實際完工日")
 
     def __str__(self):
         return self.name
