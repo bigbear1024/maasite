@@ -100,8 +100,8 @@ class Road(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "道路清單"
-        verbose_name_plural = "E.道路清單"
+        verbose_name = "計畫道路"
+        verbose_name_plural = "E.計畫道路"
 
 
 class Milestone(models.Model):

@@ -3,16 +3,18 @@
 {% block content %}
 <h3 class="mt-5">計畫道路</h3>
 <table class="mt-5 table table-striped table-hover">
-    <th width="30%">道路名稱</th>
-    <th width="17.5%">分區</th>
-    <th width="17.5%">路寬</th>
-    <th width="17.5%">預計施工日</th>
-    <th width="17.5%">預計完工日</th>
+    <th width="13%">道路名稱</th>
+    <th width="13%">分區</th>
+    <th width="13%">路寬</th>
+    <th width="33%">位置</th>
+    <th width="14%">預計施工日</th>
+    <th width="14%">預計完工日</th>
     {% for road in roads %}
     <tr>
         <td>{{ road.name }}</td>
         <td>{{ road.zone }}</td>
         <td>{{ road.width }}</td>
+        <td>{{ road.location }}</td>
         <td>{{ road.estimated_construction }}</td>
         <td>{{ road.estimated_completion }}</td>
     </tr>

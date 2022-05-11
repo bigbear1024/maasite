@@ -72,7 +72,7 @@ class WebsiteLinkAdmin(admin.ModelAdmin):
 @admin.register(Road)
 class RoadAdmin(admin.ModelAdmin):
     search_fields = ['name']
-    list_display = ('name', 'zone', 'width', 'estimated_construction', 'actual_construction',
+    list_display = ('name', 'zone', 'width', 'location', 'estimated_construction', 'actual_construction',
                     'estimated_completion', 'actual_completion')
 
 
