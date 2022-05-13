@@ -73,6 +73,8 @@ class Contact(models.Model):
 
 
 class Road(models.Model):
+    number = models.CharField(max_length=20, null=True,
+                              blank=True, verbose_name="編號")
     name = models.CharField(max_length=200, null=True,
                             blank=True, verbose_name="道路名稱")
     location = models.CharField(

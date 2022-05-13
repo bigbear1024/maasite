@@ -96,5 +96,5 @@ def milestones(request):
 
 
 def roads(request):
-    roads = Road.objects.all().order_by('name')
+    roads = Road.objects.all().order_by('number')
     return render(request, 'roads.html', {'roads': roads})
