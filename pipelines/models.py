@@ -150,11 +150,11 @@ class Meeting(models.Model):
         max_length=255, null=True, blank=True, verbose_name="會議記錄文號")
     issue_date = models.DateField(default=date.today, verbose_name="會議記錄發文日期")
     minutes_file = models.FileField(
-        upload_to="media/meeting/file/", null=True, blank=True, verbose_name="會議(勘)完整掃描檔上傳")
+        upload_to="media/meeting/file", null=True, blank=True, verbose_name="會議(勘)完整掃描檔上傳")
     keynote_file = models.FileField(
-        upload_to="media/meeting/keynote/", null=True, blank=True, verbose_name="簡報上傳")
+        upload_to="media/meeting/keynote", null=True, blank=True, verbose_name="簡報上傳")
     photo = models.ImageField(
-        upload_to="media/meeting/photo/", null=True, blank=True, verbose_name="照片上傳")
+        upload_to="media/meeting/photo", null=True, blank=True, verbose_name="照片上傳")
 
     class Meta:
         verbose_name = "行事曆"
