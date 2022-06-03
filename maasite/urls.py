@@ -25,6 +25,8 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls'))
 ]
 
+admin.site.site_header = '塭仔圳市地重劃區（第一區）PCM 管線協調'
+admin.site.site_title = 'PCM管線協調'
 # Use include() to add paths from the catalog application
 
 urlpatterns += [

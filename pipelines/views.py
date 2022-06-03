@@ -7,9 +7,9 @@ from unittest import TestProgram
 from urllib import request
 from django.core.paginator import Paginator
 from django.shortcuts import render
-from .models import Contact, Meeting, Milestone, Road, Task, WebsiteLink
+from .models import Contact, Meeting, Milestone, Road, Task, WebsiteLink, Reference
 from django.views import generic
-from .filters import ContactFilter, MeetingFilter
+from .filters import ContactFilter, MeetingFilter, RoadFilter
 
 
 def index(request):
@@ -95,6 +95,21 @@ def milestones(request):
     return render(request, 'milestones.html', {'milestones': milestones})
 
 
-def roads(request):
-    roads = Road.objects.all().order_by('number')
-    return render(request, 'roads.html', {'roads': roads})
+def references(request):
+    references = Reference.objects.all()
+    return render(request, 'references.html', {'references': references})
+
+# def roads(request):
+#     roads = Road.objects.all().order_by('number')
+#     return render(request, 'roads.html', {'roads': roads})
+
+
+class RoadListView(generic.ListView):
+    model = Road
+    ordering = ('number')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = RoadFilter(
+            self.request.GET, queryset=self.get_queryset())
+        return context

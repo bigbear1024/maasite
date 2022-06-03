@@ -11,12 +11,9 @@ import re
 from statistics import mode
 from tabnanny import verbose
 from turtle import width
-from types import TracebackType
 from unicodedata import name
 from django.db import models
-from django.contrib import admin
 from datetime import date
-from django.forms import CharField
 from django.urls import reverse
 from tinymce import models as tinymce_models
 
@@ -81,7 +78,8 @@ class Road(models.Model):
         max_length=200, null=True, blank=True, verbose_name="位置")
     coordinate = models.CharField(
         max_length=100, null=True, blank=True, verbose_name="座標")
-    zone = models.CharField(max_length=100, null=True,
+
+    zone = models.CharField(max_length=10, null=True,
                             blank=True, verbose_name="分區")
     width = models.CharField(max_length=20, null=True,
                              blank=True, verbose_name="路寬")
@@ -224,3 +222,12 @@ class WebsiteLink(models.Model):
 
 class Reference(models.Model):
     name = models.CharField(max_length=200, verbose_name="名稱")
+    file = models.FileField(upload_to="media/reference/file/",
+                            null=True, blank=True, verbose_name="檔案")
+
+    class Meta:
+        verbose_name = "參考資料"
+        verbose_name_plural = "H.參考資料"
+
+    def __str__(self):
+        return self.name

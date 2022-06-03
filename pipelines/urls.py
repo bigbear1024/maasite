@@ -13,5 +13,6 @@ urlpatterns = [
     path('news/', views.news, name='news'),
     path('links/', views.links, name='links'),
     path('milestones/', views.milestones, name='milestones'),
-    path('roads/', views.roads, name='roads'),
+    path('roads/', views.RoadListView.as_view(), name='roads'),
+    path('references/', views.references, name='references'),
 ]

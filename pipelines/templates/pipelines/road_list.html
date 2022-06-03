@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}計畫道路{% endblock %}
+{% block content %}
+{% load bootstrap %}
+<h3 class="mt-5">計畫道路</h3>
+<div class="row">
+    <div class="col-12 col-md-10">
+        <table class="mb-5 table table-striped table-hover">
+            <th width="10%">道路名稱</th>
+            <th width="10%">分區</th>
+            <th width="10%">路寬</th>
+            <th width="32%">位置</th>
+            <th width="16%">預計施工日</th>
+            <th width="16%">預計完工日</th>
+            {% for road in filter.qs %}
+            <tr>
+                <td>{{ road.name }}</td>
+                <td>{{ road.zone }}</td>
+                <td>{{ road.width }}</td>
+                <td>{{ road.location }}</td>
+                <td>{{ road.estimated_construction }}</td>
+                <td>{{ road.estimated_completion }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="col-12 col-md-2">
+        <form method="GET">
+            {{ filter.form|bootstrap }}
+            <button type="submit" class="btn btn-primary">搜尋</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

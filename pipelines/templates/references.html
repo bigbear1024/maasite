@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}參考資料{% endblock %}
+{% block content %}
+<h3 class="mt-5">參考資料</h3>
+<div class="table-responsive-lg">
+    <table class="mt-5 table table-borderless">
+        {% for reference in references %}
+        <tr>
+            <td>{{reference.name}}</td>
+            {% if reference.file %}
+            <td><a href="{{ reference.file.url }}" download class="btn btn-primary">下載</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

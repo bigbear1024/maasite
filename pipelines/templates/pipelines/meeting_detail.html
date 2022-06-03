@@ -19,7 +19,7 @@
         <p><strong>與會單位：</strong> {{ meeting.company.all|join:"、" }}</p>
         <h4 class="mt-5">檔案下載</h4>
         {% if meeting.minutes_file %}
-        <p><strong>會議(勘)完整掃描檔</strong></p><a href="{{ meeting.minutes_file.url }}" download class="btn btn-primary"
+        <p><strong>會議(勘)完整掃描檔</strong></p><a href="{{ meeting.minutes_file.url }}" class="btn btn-primary"
             role="button">下載</a>
         {% endif %}
         <hr>

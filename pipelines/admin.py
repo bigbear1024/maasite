@@ -5,7 +5,7 @@ from pyexpat import model
 from statistics import mode
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
-from .models import Company, Contact, Department, Road, Task, Meeting, WebsiteLink, Project, Milestone
+from .models import Company, Contact, Department, Road, Task, Meeting, WebsiteLink, Project, Milestone, Reference
 
 
 class ContactInline(admin.StackedInline):
@@ -79,3 +79,8 @@ class RoadAdmin(admin.ModelAdmin):
 @admin.register(Milestone)
 class MilestoneAdmin(admin.ModelAdmin):
     list_display = ('name', 'completion_date')
+
+
+@admin.register(Reference)
+class ReferenceAdmin(admin.ModelAdmin):
+    list_display = ('name', 'file')
