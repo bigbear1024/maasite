@@ -66,7 +66,7 @@ class ContactDetailView(generic.DeleteView):
 
 
 def news(request):
-    news_link = WebsiteLink.objects.filter(type='n').order_by('-id')
+    news_link = WebsiteLink.objects.filter(type='n').order_by('pk')
     paginator = Paginator(news_link, 6)  # Show 6 links per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
