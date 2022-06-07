@@ -4,7 +4,6 @@ from multiprocessing import Event
 from pyexpat import model
 from statistics import mode
 from django.contrib import admin
-from import_export.admin import ImportExportModelAdmin
 from .models import Company, Contact, Department, Road, Task, Meeting, WebsiteLink, Project, Milestone, Reference
 
 

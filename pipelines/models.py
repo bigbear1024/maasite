@@ -6,6 +6,7 @@ import numbers
 from operator import mod, ne
 from pydoc import locate
 from pyexpat import model
+from django.contrib import admin
 from re import T
 import re
 from statistics import mode
@@ -145,7 +146,7 @@ class Meeting(models.Model):
                              blank=True, verbose_name="地點")
     agenda = models.TextField(null=True, blank=True, verbose_name="議題")
     minutes = tinymce_models.HTMLField(
-        max_length=3000, null=True, blank=True, verbose_name="會議記錄")
+        max_length=4000, null=True, blank=True, verbose_name="會議記錄")
     issue_no = models.CharField(
         max_length=255, null=True, blank=True, verbose_name="會議記錄文號")
     issue_date = models.DateField(default=date.today, verbose_name="會議記錄發文日期")

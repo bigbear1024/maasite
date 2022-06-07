@@ -65,20 +65,8 @@ class ContactDetailView(generic.DeleteView):
     model = Contact
 
 
-# def contacts(request):
-#     contacts = Contact.objects.all()
-#     contact_filter = ContactFilter(queryset=contacts)
-#     paginator = Paginator(contacts, 10)
-#     page_number = request.GET.get('page')
-#     page_obj = paginator.get_page(page_number)
-#     if request.method == "POST":
-#         contact_filter = ContactFilter(request.POST, queryset=contacts)
-#     context = {'contact_filter': contact_filter}
-#     return render(request, 'contacts.html', context)
-
-
 def news(request):
-    news_link = WebsiteLink.objects.filter(type='n')
+    news_link = WebsiteLink.objects.filter(type='n').order_by('-id')
     paginator = Paginator(news_link, 6)  # Show 6 links per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
