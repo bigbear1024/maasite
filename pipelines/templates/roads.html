@@ -1,23 +1,49 @@
 {% extends 'base.html' %}
 {% block title %}計畫道路{% endblock %}
 {% block content %}
-<h3 class="mt-5">計畫道路</h3>
-<table class="mt-5 table table-striped table-hover">
-    <th width="13%">道路名稱</th>
-    <th width="13%">分區</th>
-    <th width="13%">路寬</th>
-    <th width="33%">位置</th>
-    <th width="14%">預計施工日</th>
-    <th width="14%">預計完工日</th>
-    {% for road in roads %}
-    <tr>
-        <td>{{ road.name }}</td>
-        <td>{{ road.zone }}</td>
-        <td>{{ road.width }}</td>
-        <td>{{ road.location }}</td>
-        <td>{{ road.estimated_construction }}</td>
-        <td>{{ road.estimated_completion }}</td>
-    </tr>
-    {% endfor %}
-</table>
+{% load leaflet_tags %}
+{% leaflet_js %}
+{% leaflet_css %}
+<div class="mb-5 row">
+    <h1 class="mt-5">計畫道路</h1>
+    {% leaflet_map "main" %}
+</div>
+<script>
+    var dataurl = '{% url "data" %}';
+
+    window.addEventListener("map:init", function (event) {
+        var map = event.detail.map;
+        var myStyle = {
+            "color": "#ff7800",
+            "weight": 6,
+            "opacity": 0.65
+        };
+        // Download GeoJSON data with Ajax
+        fetch(dataurl)
+            .then(function (resp) {
+                return resp.json();
+            })
+            .then(function (data) {
+                L.geoJson(data, {
+                    style: myStyle,
+                    onEachFeature: function onEachFeature(feature, layer) {
+                        var props = feature.properties;
+                        var content = `<h3>${props.name}</h3><p>預計施工日:${props.estimated_construction}</p>`;
+                        layer.bindPopup(content);
+                    }
+                }).addTo(map);
+            });
+        fetch('/static/kml/road.kml')
+            .then(res => res.text())
+            .then(kmltext => {
+                // Create new kml overlay
+                const parser = new DOMParser();
+                const kml = parser.parseFromString(kmltext, 'text/xml');
+                const track = new L.KML(kml);
+                map.addLayer(track);
+            });
+    });
+</script>
+{% load static %}
+<script src="{% static 'js/L.KML.js' %}"></script>
 {% endblock %}

@@ -1,5 +1,9 @@
 from django.urls import path
+
+from .models import Road
 from . import views
+from django.views.generic import TemplateView
+from djgeojson.views import GeoJSONLayerView
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,4 +19,7 @@ urlpatterns = [
     path('milestones/', views.milestones, name='milestones'),
     path('roads/', views.RoadListView.as_view(), name='roads'),
     path('references/', views.references, name='references'),
+    path('roadmap/', TemplateView.as_view(template_name='roads.html'), name='roadmap'),
+    path('data.geojson', GeoJSONLayerView.as_view(model=Road, properties=(
+        'name', 'estimated_construction', 'actual_construction')), name='data'),
 ]

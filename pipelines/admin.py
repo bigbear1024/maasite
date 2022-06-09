@@ -4,6 +4,7 @@ from multiprocessing import Event
 from pyexpat import model
 from statistics import mode
 from django.contrib import admin
+from leaflet.admin import LeafletGeoAdmin
 from .models import Company, Contact, Department, Road, Task, Meeting, WebsiteLink, Project, Milestone, Reference
 
 
@@ -47,8 +48,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Meeting)
 class MeetingAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['company', 'road',
-                           'host', 'contact_person', 'project']
+    autocomplete_fields = ['company', 'host', 'contact_person', 'project']
     list_display = ('subject', 'meeting_date', 'notification_no',
                     'notification_date', 'issue_no', 'issue_date', 'company_display')
     fieldsets = ((None, {'fields': ('meeting_date', 'subject', 'project', 'notification_date', 'notification_no',
@@ -57,7 +57,7 @@ class MeetingAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    autocomplete_fields = ['company', 'road']
+    autocomplete_fields = ['company']
     list_display = ('number', 'subject', 'date',
                     'company_display', 'road_display')
 
@@ -68,11 +68,13 @@ class WebsiteLinkAdmin(admin.ModelAdmin):
     list_display = ('name', 'link', 'type')
 
 
-@admin.register(Road)
-class RoadAdmin(admin.ModelAdmin):
+class RoadAdmin(LeafletGeoAdmin):
     search_fields = ['name']
     list_display = ('number', 'name', 'zone', 'width', 'location', 'estimated_construction', 'actual_construction',
                     'estimated_completion', 'actual_completion')
+
+
+admin.site.register(Road, RoadAdmin)
 
 
 @admin.register(Milestone)

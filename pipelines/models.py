@@ -17,6 +17,7 @@ from django.db import models
 from datetime import date
 from django.urls import reverse
 from tinymce import models as tinymce_models
+from djgeojson.fields import LineStringField
 
 
 class Company(models.Model):
@@ -96,6 +97,7 @@ class Road(models.Model):
     actual_completion = models.DateField(
         default=date.today, null=True,
         blank=True, verbose_name="實際完工日")
+    geom = LineStringField(null=True, verbose_name="繪製道路")
 
     def __str__(self):
         return self.name

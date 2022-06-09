@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'import_export',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djgeojson',
+    'leaflet',
     'django_filters',
     'bootstrapform',
     'tinymce',
@@ -103,7 +104,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (25.0427464027, 121.4409317945),
+    'DEFAULT_ZOOM': 15,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'DEFAULT_PRECISION': 6,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -135,4 +142,5 @@ MEDIA_DIRS = [BASE_DIR / "media", ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-IMPORT_EXPORT_USE_TRANSACTIONS = True
+GDAL_LIBRARY_PATH = '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+GEOS_LIBRARY_PATH = '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
