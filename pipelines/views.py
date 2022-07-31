@@ -61,7 +61,7 @@ class ContactListView(generic.ListView):
         return context
 
 
-class ContactDetailView(generic.DeleteView):
+class ContactDetailView(generic.DetailView):
     model = Contact
 
 

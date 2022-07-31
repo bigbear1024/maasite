@@ -97,14 +97,22 @@ class Road(models.Model):
     actual_completion = models.DateField(
         default=date.today, null=True,
         blank=True, verbose_name="實際完工日")
+    photo = models.ImageField(
+        upload_to="media/road/photo", null=True, blank=True, verbose_name="照片")
     geom = LineStringField(null=True, verbose_name="繪製道路")
-
-    def __str__(self):
-        return self.name
 
     class Meta:
         verbose_name = "計畫道路"
         verbose_name_plural = "E.計畫道路"
+
+    @property
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            # 判斷有沒有圖片檔案，沒有這行會跳錯誤，找不到檔案
+            return self.photo.url
+
+    def __str__(self):
+        return self.name
 
 
 class Milestone(models.Model):

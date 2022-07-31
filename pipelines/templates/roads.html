@@ -6,6 +6,7 @@
 {% leaflet_css %}
 <div class="mb-5 row">
     <h1 class="mt-5">計畫道路</h1>
+
     {% leaflet_map "main" %}
 </div>
 <script>
@@ -28,7 +29,7 @@
                     style: myStyle,
                     onEachFeature: function onEachFeature(feature, layer) {
                         var props = feature.properties;
-                        var content = `<h3>${props.name}</h3><p>預計施工日:${props.estimated_construction}</p>`;
+                        var content = `<img width="300" src="${props.photo_url}"/><h3>${props.name}</h3><p>預計施工日:${props.estimated_construction}</p><p>預計完工日:${props.estimated_completion}</p>`;
                         layer.bindPopup(content);
                     }
                 }).addTo(map);

@@ -21,5 +21,5 @@ urlpatterns = [
     path('references/', views.references, name='references'),
     path('roadmap/', TemplateView.as_view(template_name='roads.html'), name='roadmap'),
     path('data.geojson', GeoJSONLayerView.as_view(model=Road, properties=(
-        'name', 'estimated_construction', 'actual_construction')), name='data'),
+        'name', 'estimated_construction', 'estimated_completion', 'photo_url')), name='data'),
 ]
